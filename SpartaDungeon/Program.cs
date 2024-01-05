@@ -176,12 +176,12 @@ namespace SpartaDungeon
             {
                 items = new List<ShopItemData>();
                 items.AddRange(new ShopItemData[] {
-                    new ShopItemData(1, "낡은 천 갑옷", "방어구", +1, "낡은 천으로 만들어진 갑옷", 400),
-                    new ShopItemData(2, "질긴 가죽 갑옷", "방어구", +2, "질긴 가죽으로 만들어진 갑옷",600),
-                    new ShopItemData(3, "단단한 철 갑옷", "방어구", +3, "철로 만들어진 단단한 갑옷", 800),
-                    new ShopItemData(4, "녹슨 검", "무기", +1, "곧이라도 부러질 것 같은 녹이 슨 검", 400),
-                    new ShopItemData(5, "낡은 검", "무기", +2, "그럭저럭 쓸만한 검", 600),
-                    new ShopItemData(6, "날카로운 검", "무기", +3, "무엇이든 다 벨 수 있을 것 같은 검", 800)
+                    new ShopItemData(1, "수련자 갑옷", "방어구", +5, "수련에 도움을 주는 갑옷", 400),
+                    new ShopItemData(2, "무쇠갑옷", "방어구", +9, "무쇠로 만들어진 튼튼한 갑옷",600),
+                    new ShopItemData(3, "스파르타 갑옷", "방어구", +15, "스파르타 전사들의 전설 갑옷", 800),
+                    new ShopItemData(4, "녹슨 검", "무기", +2, "쉽게 볼 수 있는 검", 400),
+                    new ShopItemData(5, "낡은 검", "무기", +5, "그럭저럭 쓸만한 검", 600),
+                    new ShopItemData(6, "스파르타 검", "무기", +10, "스파르타 전사들의 전설 검", 800)
                 });
             }
 
@@ -203,14 +203,14 @@ namespace SpartaDungeon
             Console.WriteLine($"{player.playerGold} G\n");
 
             Console.WriteLine("[아이템 목록]");
-            Console.WriteLine("No.|      이름      |  타입  | 스탯 |   가격   ");
-            Console.WriteLine("-----------------------------------------------");
+            Console.WriteLine("No.|      이름      |    타입    |   스탯    |    가격    ");
+            Console.WriteLine("---------------------------------------------------------");
 
             foreach (var item in shopManager.GetItems())
             {
                 string priceInfo = item.IsBought ? "구매 완료" : $"{item.ShopItemPrice} G";
-
-                Console.WriteLine($"{item.ShopItemNumber,-1} | {item.ShopItemName,-16} | {item.ShopItemType,-5} | {item.ShopItemStat,-4} | {priceInfo,-9}");
+                string statType = item.ShopItemType == "방어구" ? "방어력" : "공격력";
+                Console.WriteLine($"{item.ShopItemNumber,-1} | {item.ShopItemName,-8} | {item.ShopItemType,-5} | {statType} + {item.ShopItemStat,-2} | {priceInfo,-9}");
             }
         }
 
